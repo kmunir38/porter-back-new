@@ -522,6 +522,36 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>Orders</td>
+                            <td>
+                                <div class="pretty p-icon p-jelly p-round p-bigger">
+                                    {{ Form::checkbox('permission[order-list]', 'order-list', $role->hasPermissionTo('order-list')) }}
+                                    <div class="state p-info">
+                                        <i class="icon material-icons">done</i>
+                                        <label>List</label>
+                                    </div>
+                                </div>
+                            </td>                            
+                            <td>
+                                <div class="pretty p-icon p-jelly p-round p-bigger">
+                                    {{ Form::checkbox('permission[order-edit]', 'order-edit', $role->hasPermissionTo('order-edit')) }}
+                                    <div class="state p-info">
+                                        <i class="icon material-icons">done</i>
+                                        <label>Edit</label>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="pretty p-icon p-jelly p-round p-bigger">
+                                    {{ Form::checkbox('permission[order-delete]', 'order-delete', $role->hasPermissionTo('order-delete')) }}
+                                    <div class="state p-info">
+                                        <i class="icon material-icons">done</i>
+                                        <label>Delete</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>Dashboard</td>
                             <td>
                                 <div class="pretty p-icon p-jelly p-round p-bigger">

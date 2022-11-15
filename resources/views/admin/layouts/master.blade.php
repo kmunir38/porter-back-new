@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="{{ asset('assets/admin/bundles/bootstrap-daterangepicker/daterangepicker.css') }}">
 
   <link rel="stylesheet" href="{{ asset('assets/admin/bundles/summernote/summernote-bs4.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/admin/bundles/select2/dist/css/select2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/admin/bundles/jquery-selectric/selectric.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
   <!-- General CSS Files datatables -->
@@ -236,6 +237,18 @@
               </li>
             @endif
 
+            @if(Gate::check('order-list'))
+              <li class="dropdown {{ Request::is('admin/orders') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-cart"></i><span>Orders</span></a>
+                <ul class="dropdown-menu">
+                  @can('order-list')
+                    <li class="{{ Request::is('admin/orders') ? 'active' : '' }}"><a class="nav-link" href="{{ url('/admin/orders') }}">All Orders</a></li>
+                  @endcan
+                 
+                </ul>
+              </li>
+            @endif
+
             @if(Gate::check('coupon-list') || Gate::check('coupon-create'))
               <li class="dropdown {{ Request::is('admin/coupons', 'admin/coupons/create') ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-bag"></i><span>Coupons</span></a>
@@ -262,6 +275,9 @@
                 @endcan 
                 @can('setting-list')
                 <li class="{{ Request::is('admin/settings') ? 'active' : '' }}"><a class="nav-link" href="{{ route('settings.index') }}">Settings</a></li>
+                @endcan
+                @can('setting-list')
+                <li class="{{ Request::is('admin/reports') ? 'active' : '' }}"><a class="nav-link" href="{{ url('/admin/reports') }}">Reports</a></li>
                 @endcan             
               </ul>
             </li>
@@ -291,6 +307,7 @@
   <script src="{{ asset('assets/admin/bundles/apexcharts/apexcharts.min.js') }}"></script>
   <!-- JS Libraies create-post-->
   <script src="{{ asset('assets/admin/bundles/summernote/summernote-bs4.js') }}"></script>
+  <script src="{{ asset('assets/admin/bundles/select2/dist/js/select2.full.min.js')}}"></script>
   <script src="{{ asset('assets/admin/bundles/jquery-selectric/jquery.selectric.min.js') }}"></script>
   <script src="{{ asset('assets/admin/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
   <script src="{{ asset('assets/admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>

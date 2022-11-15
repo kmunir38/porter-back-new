@@ -13,22 +13,22 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('moov', function() {
-    $url = "https://196.28.245.227/tlcfzc_gw/api/gateway/3pp/transaction/process?command-id=transfer-api-transaction";
-    $curl = curl_init($url);
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+// Route::get('moov', function() {
+//     $url = "https://196.28.245.227/tlcfzc_gw/api/gateway/3pp/transaction/process?command-id=transfer-api-transaction";
+//     $curl = curl_init($url);
+//         curl_setopt($curl, CURLOPT_URL, $url);
+//         curl_setopt($curl, CURLOPT_POST, true);
+//         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         
-        $headers = array(
-          "Authorization: Basic U01JTDowN1Npc2ZhejAwNmo=",
-          "command-id:   transfer-api-transaction",
-        );
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        $resp = curl_exec($curl);
-        curl_close($curl);
-        var_dump($resp);die();
-});
+//         $headers = array(
+//           "Authorization: Basic U01JTDowN1Npc2ZhejAwNmo=",
+//           "command-id:   transfer-api-transaction",
+//         );
+//         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+//         $resp = curl_exec($curl);
+//         curl_close($curl);
+//         var_dump($resp);die();
+// });
 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function() {
     // Route::get('app', 'Coupon\IndexController@index');

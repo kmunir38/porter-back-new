@@ -124,4 +124,5 @@ class RiderController extends Controller
         Toastr::success('Rider deleted successfully.', 'Success');
        	return redirect()->route('riders.index');
     }
+
 }

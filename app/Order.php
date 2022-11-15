@@ -154,5 +154,4 @@ class Order extends Model
     {
         return $this->belongsTo('App\Address', 'address_id');
     }
-
 }

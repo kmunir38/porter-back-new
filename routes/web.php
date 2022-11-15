@@ -88,6 +88,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
 
         Route::get('riders/rider-details', 'RiderDetailController@index')->name('riders.rider-detail.index')->middleware('permission:rider-detail-list');
         Route::get('riders/rider-details/{id}/view', 'RiderDetailController@view')->name('riders.rider-detail.view')->middleware('permission:rider-detail-view');
+        Route::get('riders/reports', 'RiderDetailController@reports')->name('riders.reports')->middleware('permission:rider-detail-view');
 
     });
 
@@ -147,6 +148,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::any('expertise/{id}/destroy', 'IndexController@destroy')->name('expertise.destroy')->middleware('permission:expertise-delete');
     });
 
+    Route::group(['namespace' => 'Order'], function (){
+        Route::get('orders', 'IndexController@index')->name('order.index')->middleware('permission:order-list');       
+        Route::get('order/{id}/view', 'IndexController@show')->name('order.view')->middleware('permission:order-view');
+        Route::put('order/{id}', 'IndexController@update')->name('order.update')->middleware('permission:order-edit');
+        Route::any('order/{id}/destroy', 'IndexController@destroy')->name('order.destroy')->middleware('permission:order-delete');
+    });
+
     Route::group(['namespace' => 'Coupon'], function (){
         Route::get('coupons', 'IndexController@index')->name('coupon.index')->middleware('permission:coupon-list');
         Route::get('coupons/create', 'IndexController@create')->name('coupon.create')->middleware('permission:coupon-create');
@@ -170,5 +178,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::group(['namespace' => 'Setting'], function (){
         Route::get('settings', 'IndexController@index')->name('settings.index')->middleware('permission:setting-list');
         Route::post('settings', 'IndexController@store')->name('settings.store')->middleware('permission:setting-list');      
+    });
+
+    Route::group(['namespace' => 'Report'], function (){
+        Route::get('reports', 'IndexController@index')->name('report.index')->middleware('permission:setting-list');
+        Route::post('filter', 'IndexController@filter')->name('filter')->middleware('permission:setting-list');      
     });
 });
